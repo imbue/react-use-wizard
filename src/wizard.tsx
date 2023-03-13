@@ -57,6 +57,11 @@ const Wizard: React.FC<React.PropsWithChildren<WizardProps>> = React.memo(
           setIsLoading(true);
           await nextStepHandler.current();
           setIsLoading(false);
+          
+          if (!res) {
+            return
+          }
+          
           nextStepHandler.current = null;
           goToNextStep.current();
         } catch (error) {
